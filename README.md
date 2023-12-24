@@ -1,6 +1,6 @@
 # How to keep Flutter apps running in background on Android
 
-This is a sample project that acts as a companion for an article that I wrote talking about some techniques to keep Flutter apps running. If you are interested you can find the article here: https://medium.com/@ppicas/keep-flutter-running-background-on-android-6ffc85be0234
+This is a sample project that shows some techniques to keep Flutter apps running and send us the notifications Peridically with help of Local Notifications.
 
 ## App features
 
@@ -8,7 +8,6 @@ This is simple Flutter app that when it's opened it will show a screen with a co
 
 These are the techniques used by this project to keep Flutter running:
 
-- Use of `moveTaskToBack` to survive when back button is pressed.
 - Creation of a foreground service to increase process priority.
 - Start and stop a new Isolate to run Dart background code when `FlutterActivity` is destroyed.
 
