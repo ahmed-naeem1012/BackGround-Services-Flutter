@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(221, 226, 226, 226),
+      backgroundColor: Color.fromARGB(221, 25, 25, 25),
       appBar: AppBar(
         title: Row(
           children: [
@@ -74,65 +74,86 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.only(right: 15, left: 15, top: 30),
+            padding: EdgeInsets.only(right: 15, left: 15, top: 20),
             child: Text(
               'تطبيق الابتزاز يقدم نصائح فورية لتوعية المستخدمين حول مخاطر الابتزاز الإلكتروني، ضمانًا لسلامتهم الرقمية',
               textAlign: TextAlign.right,
               style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
-                  color: Color.fromARGB(255, 14, 12, 64)),
+                  color: Color.fromARGB(255, 245, 241, 5)),
             ),
           ),
           Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 0.0),
-                child: Center(
-                  child: ValueListenableBuilder(
-                    valueListenable: CounterService.instance().count,
-                    builder: (context, count, child) {
-                      return Padding(
-                        padding: EdgeInsets.only(top: 0, right: 20, left: 25),
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              check = true;
-                              log(check.toString());
-                            });
-                          },
-                          child: SizedBox(
-                              child: Image.asset(
-                            check == false
-                                ? 'assets/images/1.png'
-                                : 'assets/images/2.png',
-                            height: 200,
-                            width: 200,
-                          )),
-                        ),
-                      );
-                    },
-                  ),
+              Center(
+                child: ValueListenableBuilder(
+                  valueListenable: CounterService.instance().count,
+                  builder: (context, count, child) {
+                    return Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Image.asset(
+                                'assets/images/lpic.png',
+                                height: 130,
+                                width: 150,
+                              ),
+                              Image.asset(
+                                'assets/images/rpic.png',
+                                height: 130,
+                                width: 150,
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "نحن مستعدون لاستماع اقتراحاتكم ومشاركتكم في تطوير التطبيق. يُرجى التواصل معنا عبر الأرقام التالية لتبادل أفكاركم وتجاربكم. شكرًا لتعاونكم في جعل التطبيق أفضل!",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 20, left: 25, bottom: 35),
-                child: Text(
-                  '"نحن مستعدون لاستماع اقتراحاتكم ومشاركتكم في تطوير التطبيق. يُرجى التواصل معنا عبر الأرقام التالية لتبادل أفكاركم وتجاربكم. شكرًا لتعاونكم في جعل التطبيق أفضل!"',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(),
-                ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    check = true;
+                    log(check.toString());
+                  });
+                },
+                child: SizedBox(
+                    child: Image.asset(
+                  check == false
+                      ? 'assets/images/1.png'
+                      : 'assets/images/2.png',
+                  height: 150,
+                  width: 190,
+                )),
               ),
+              Text(
+                'info@norybazar.com',
+                style: TextStyle(
+                    fontSize: 13,
+                    color: Color.fromRGBO(250, 250, 250, 0.976),
+                    fontWeight: FontWeight.w600),
+              ),
+              SizedBox(
+                height: 30,
+              )
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
-            child: Text(
-              '0317043169',
-              style: TextStyle(
-                  fontSize: 14, color: Color.fromARGB(250, 60, 60, 60)),
-            ),
-          )
         ],
       ),
     );

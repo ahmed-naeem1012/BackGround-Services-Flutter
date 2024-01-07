@@ -56,7 +56,7 @@ class CounterService {
   void _onSelectNotification(String? payload) {}
 
   void startCounting() {
-    Stream.periodic(Duration(seconds: 5)).listen((_) async {
+    Stream.periodic(Duration(minutes: 1)).listen((_) async {
       _counter.increment();
       await _scheduleNotification(_counter.count.value);
     });
@@ -64,29 +64,24 @@ class CounterService {
 
   Future<void> _scheduleNotification(int count) async {
     var androidDetails = const AndroidNotificationDetails(
-        'channel_id', 'channel_name',
-        importance: Importance.max,
-        priority: Priority.high,
-        styleInformation: BigTextStyleInformation(''),
-        indeterminate: true,
-        enableLights: true,
-        fullScreenIntent: true,
-        setAsGroupSummary: true,
-        autoCancel: false,
-        showWhen: true,
-        ongoing: true);
+      'channel_id',
+      'channel_name',
+      importance: Importance.max,
+      priority: Priority.high,
+      styleInformation: BigTextStyleInformation(''),
+    );
     var platformDetails = NotificationDetails(android: androidDetails);
 
     String notificationMessage =
         _notificationMessages[count % _notificationMessages.length];
     int notificationId = Random().nextInt(1000000);
-    // Show the notification immediately
+
     await _flutterLocalNotificationsPlugin.show(
-      notificationId, // Unique ID for the notification
+      notificationId,
       'Abtzaz', // Title
       notificationMessage, // Body
       platformDetails, // Notification details
-      payload: 'Item $count', // Optional payload
+      payload: 'Item $count',
     );
   }
 }
