@@ -71,6 +71,9 @@ class NotificationServices {
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       if (kDebugMode) {
         print('user granted permission');
+        await FirebaseMessaging.instance
+            .subscribeToTopic("topic")
+            .then((value) => print('done'));
       }
     } else if (settings.authorizationStatus ==
         AuthorizationStatus.provisional) {

@@ -57,8 +57,8 @@ class CounterService {
 
   void startCounting() {
     Stream.periodic(Duration(minutes: 1)).listen((_) async {
-      _counter.increment();
-      await _scheduleNotification(_counter.count.value);
+      // _counter.increment();
+      // await _scheduleNotification(_counter.count.value);
     });
   }
 
